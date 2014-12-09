@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>APP支付SHA1签名测试</title>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;" />
+    
+<style>
+  body { margin:0;padding:0;background:#eae9e6; }
+  body,p,table,td,th { font-size:14px;font-family:helvetica,Arial,Tahoma; }
+  h1 { font-family:Baskerville,HelveticaNeue-Bold,helvetica,Arial,Tahoma; }
+  a { text-decoration:none;color:#385487;}
+</style>
+
+<script>
+function getSha1(){
+	var keyvaluestring=document.form2.or_string.value;
+	var sign = ""+CryptoJS.SHA1(keyvaluestring);
+	document.getElementById("sha1string").innerHTML=HTMLEncode(keyvaluestring);
+	document.getElementById("sha1result").innerHTML=sign;
+	document.getElementById( "SHA2").style.display= "block";
+	document.getElementById( "SHA3").style.display= "block";
+}
+
+function HTMLEncode(html)
+{
+var temp = document.createElement ("div");
+(temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+var output = temp.innerHTML;
+temp = null;
+return output;
+}
+</script>
+</head>
+<body>
+
+	
+<form name="form2" target="_blank">
+<table width="317" border="1">
+  <TR><th width="104">原串</th> 
+  <th width="210"><INPUT value="" name="or_string" id="11"></th>
+
+  </table>
+</form>
+<div id="SHA1">
+	<a id="sha1send" href="javascript:getSha1();"><h1 class="title">获取SHA1</h1></a>
+</div>	
+  
+<div id="SHA2" style="display:none">
+	<h1 class="title"><div style="color:#FF0000">SHA1前字符串：</div></h1>
+	<h1 class="title"><div id="sha1string" style="width:800px;word-break:break-all;"></div></h1>
+</div>	
+
+<div id="SHA3" style="display:none">
+	<h1 class="title"><div style="color:#FF0000">SHA1后结果：</div></h1>
+	<h1 class="title"><span id="sha1result"></span></h1>
+</div>	
+
+</body>
+</html>
